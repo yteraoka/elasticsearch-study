@@ -1,0 +1,42 @@
+---
+- name: install elasticsearch rpm
+  yum: name=https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-{{ es_version }}.noarch.rpm
+
+- name: set node.name
+  lineinfile: >
+    dest=/etc/elasticsearch/elasticsearch.yml
+    line='node.name: {{ es_node_name }}'
+    regexp='^node.name:'
+    insertafter='^# node.name'
+  notify: restart elasticsearch
+
+- name: set cluster.name
+  lineinfile: >
+    dest=/etc/elasticsearch/elasticsearch.yml
+    line='cluster.name: {{ es_cluster_name }}'
+    regexp='^cluster.name:'
+    insertafter='^# cluster.name'
+  notify: restart elasticsearch
+
+- name: set heap size
+  lineinfile: >
+    dest=/etc/sysconfig/elasticsearch
+    line='ES_HEAP_SIZE={{ es_heap_size }}'
+    regexp='^ES_HEAP_SIZE'
+    insertafter='^#ES_HEAP_SIZE'
+  notify: restart elasticsearch
+
+- name: install head plugin
+  command: >
+    /usr/share/elasticsearch/bin/plugin -install mobz/elasticsearch-head
+    creates=/usr/share/elasticsearch/plugins/head
+  notify: restart elasticsearch
+
+- name: install marvel plugin
+  command: >
+    /usr/share/elasticsearch/bin/plugin -install elasticsearch/marvel/latest
+    creates=/usr/share/elasticsearch/plugins/marvel
+  notify: restart elasticsearch
+
+- name: enable and start elasticsearch
+  service: name=elasticsearch enabled=yes state=started

@@ -1,0 +1,4 @@
+---
+es_version: '1.0.0.RC2'
+es_cluster_name: 'elasticsearch'
+es_heap_size: '1G'

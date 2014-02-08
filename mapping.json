@@ -1,0 +1,109 @@
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "ngram_analyzer": {
+          "tokenizer": "ngram_tokenizer"
+        }
+      },
+      "tokenizer": {
+        "ngram_tokenizer": {
+          "type": "nGram",
+          "min_gram": "2",
+          "max_gram": "3",
+          "token_chars": [
+            "letter",
+            "digit"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "restaurant": {
+      "properties": {
+        "restaurant_id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string",
+          "analyzer": "ngram_analyzer"
+        },
+        "name_alphabet": {
+          "type": "string",
+          "analyzer": "ngram_analyzer"
+        },
+        "name_kana": {
+          "type": "string",
+          "analyzer": "ngram_analyzer"
+        },
+        "address": {
+          "type": "string",
+          "analyzer": "ngram_analyzer"
+        },
+        "description": {
+          "type": "string",
+          "analyzer": "ngram_analyzer"
+        },
+        "purpose": {
+          "type": "string",
+          "analyzer": "ngram_analyzer"
+        },
+        "category": {
+          "type": "string",
+          "analyzer": "whitespace"
+        },
+        "photo_count": {
+          "type": "integer"
+        },
+        "menu_count": {
+          "type": "integer"
+        },
+        "access_count": {
+          "type": "integer"
+        },
+        "closed": {
+          "type": "boolean"
+        },
+        "location": {
+          "type": "geo_point",
+          "store": "yes"
+        }
+      }
+    },
+    "rating": {
+      "properties": {
+        "rating_id": {
+          "type": "integer"
+        },
+        "total": {
+          "type": "integer"
+        },
+        "food": {
+          "type": "integer"
+        },
+        "service": {
+          "type": "integer"
+        },
+        "atmosphere": {
+          "type": "integer"
+        },
+        "cost_performance": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string",
+          "analyzer": "ngram_analyzer"
+        },
+        "body": {
+          "type": "string",
+          "analyzer": "ngram_analyzer"
+        },
+        "purpose": {
+          "type": "string",
+          "analyzer": "ngram_analyzer"
+        }
+      }
+    }
+  }
+}

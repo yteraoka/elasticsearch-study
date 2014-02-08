@@ -1,0 +1,8 @@
+---
+- name: install required packages
+  yum: name={{ item }}
+  with_items:
+    - libselinux-python
+
+- name: disable iptables
+  service: name=iptables enabled=no state=stopped

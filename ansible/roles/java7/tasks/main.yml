@@ -1,0 +1,8 @@
+---
+- name: copy jdk rpm
+  copy: >
+    src=jdk-{{ jdk_version }}-linux-x64.rpm
+    dest=/var/tmp/
+
+- name: install jdk rpm
+  yum: name=/var/tmp/jdk-{{ jdk_version }}-linux-x64.rpm

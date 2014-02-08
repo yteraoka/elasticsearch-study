@@ -34,8 +34,8 @@ ansible-playbook -i hosts site.yml
 
 JVM の Heap に 1GB 割り当てる設定になっていますが、減らす場合は ansible-playbook のオプションで `-e es_heap_size=500M` などと指定します。
 
-これで http://localhost:9200/ にアクセスすると elasticsearch につながります。
-http://localhost:9200/_plugin/head/ で head plugin に http://localhost:9200/_plugin/marvel/ で marvel にアクセスできます。
+これで [http://localhost:9200/](http://localhost:9200/) にアクセスすると elasticsearch につながります。
+[http://localhost:9200/_plugin/head/](http://localhost:9200/_plugin/head/) で head plugin に [http://localhost:9200/_plugin/marvel/](http://localhost:9200/_plugin/marvel/) で marvel にアクセスできます。
 
 
 ## Livedoor のグルメの研究用データセットを登録する

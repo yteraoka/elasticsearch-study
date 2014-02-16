@@ -44,7 +44,8 @@ Ruby スクリプトで Livedoor のグルメの研究用データセットを E
 https://github.com/livedoor/datasets
 
 ```
-curl -O https://github.com/livedoor/datasets/raw/master/ldgourmet.tar.gz
+git clone https://github.com/livedoor/datasets.git
+cd datasets
 tar xvf ldgourmet.tar.gz
 ```
 
